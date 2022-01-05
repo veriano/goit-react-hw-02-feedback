@@ -1,0 +1,11 @@
+.feedback {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    color:blueviolet
+}
+.list {
+    list-style: none;
+    padding: 0;
+    font-size: 20px;
+}
