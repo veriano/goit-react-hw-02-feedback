@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Statistics.module.css';
+import Notification from '../Notification';
 
 function Statistics({ good, neutral, bad, total, positivePercentage }) {
         return (
-            <div className={s.feedback}>
-              <h2><b>Statistics</b></h2>
-              <ul className={s.list}>
-                <li><p>Good: {good}</p></li>
-                <li><p>Neutral: {neutral}</p></li>
-                <li><p>Bad: {bad}</p></li>
-                <li><p>Total: {total}</p></li>
-                <li><p>Percentage: {Math.round(positivePercentage)}%</p></li>
-
-              </ul>
+              <div className={s.feedback}>
+              <h2 className={s.statisticsTitle}><b>Statistics</b></h2>
+              {total > 0 ? (<ul className={s.list}>
+              <li><p><b>Good: {good}</b></p></li>
+              <li><p><b>Neutral: {neutral}</b></p></li>
+              <li><p><b>Bad: {bad}</b></p></li>
+              <li><p><b>Total: {total}</b></p></li>
+              <li><p><b>Percentage: {Math.round(positivePercentage)}%</b></p></li>
+            </ul>) 
+            : 
+            (<Notification message='No feedback given' />)}
             </div>
         )
 }

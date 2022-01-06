@@ -29,11 +29,19 @@
       percentage: this.props.initialPositivePercentage,
     }
 
-    handleIncrement = (option) => {
+    countTotalFeedback () {
+      this.setState(prevState => {
+        return {
+         total: prevState.good + prevState.neutral + prevState.bad,
+        }
+      })
+    }
+   
+     handleIncrement = (option) => {
       this.setState(prevState => {
         return {
           [option]: prevState[option] + 1,
-          total: prevState.good + prevState.neutral + prevState.bad + 1,
+          total: this.countTotalFeedback(),
         }
       })
     }
@@ -59,7 +67,7 @@
           total={ total }
           positivePercentage={ percentage }
           />
-          <Section />z
+          <Section />
       </div>
     )
     }
