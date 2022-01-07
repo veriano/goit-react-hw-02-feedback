@@ -29,10 +29,18 @@
       percentage: this.props.initialPositivePercentage,
     }
 
-    countTotalFeedback () {
+    countTotalFeedback() {
       this.setState(prevState => {
         return {
          total: prevState.good + prevState.neutral + prevState.bad,
+        }
+      })
+    }
+
+    countPositiveFeedbackPercentage() {
+      this.setState(prevState => {
+        return {
+          percentage: (100 / prevState.total) * prevState.good,
         }
       })
     }
@@ -42,6 +50,7 @@
         return {
           [option]: prevState[option] + 1,
           total: this.countTotalFeedback(),
+          percentage: this.countPositiveFeedbackPercentage(),
         }
       })
     }
@@ -58,7 +67,6 @@
         <FeedbackOptions 
           options={['good', 'neutral', 'bad']} 
           onLeaveFeedback={this.handleIncrement}
-          onCountTotal={this.countTotalFeedback} 
           />
         <Statistics
           good={ good }
