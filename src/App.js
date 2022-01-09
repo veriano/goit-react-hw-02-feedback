@@ -56,12 +56,8 @@
     }
 
     render() {
-      const { good } = this.state;
-      const { neutral } = this.state;
-      const { bad } = this.state;
-      const { total } = this.state;
-      const { percentage } = this.state;
-    return (
+      const { good, neutral, bad, total, percentage } = this.state;
+    
       <div>
         <Section title="Please leave feedback"></Section>
         <FeedbackOptions 
