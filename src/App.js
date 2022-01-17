@@ -9,54 +9,40 @@
       initialGood: 0,
       initialNeutral: 0,
       initialBad: 0,
-      initialTotal: 0,
-      initialPositivePercentage: 0,
     };
     
     static propTypes = {
       initialGood: PropTypes.number,
       initialNeutral: PropTypes.number,
       initialBad: PropTypes.number,
-      initialTotal: PropTypes.number,
-      initialPositivePercentage: PropTypes.number,
     }
 
     state = {
       good: this.props.initialGood,
       neutral: this.props.initialNeutral,
       bad: this.props.initialBad,
-      total: this.props.initialTotal,
-      percentage: this.props.initialPositivePercentage,
     }
 
     countTotalFeedback() {
-      this.setState(prevState => {
-        return {
-         total: prevState.good + prevState.neutral + prevState.bad,
-        }
-      })
+      const total = this.state.good + this.state.neutral + this.state.bad;
+      return total;
     }
 
     countPositiveFeedbackPercentage() {
-      this.setState(prevState => {
-        return {
-          percentage: (100 / prevState.total) * prevState.good,
-        }
-      })
+      const percentage = (100 / this.countTotalFeedback()) * this.state.good;
+      return percentage;
     }
    
      handleIncrement = (option) => {
       this.setState(prevState => {
         return {
           [option]: prevState[option] + 1,
-          total: this.countTotalFeedback(),
-          percentage: this.countPositiveFeedbackPercentage(),
         }
       })
     }
 
     render() {
-      const { good, neutral, bad, total, percentage } = this.state;
+      const { good, neutral, bad } = this.state;
     
       return (
       <div>
@@ -69,8 +55,8 @@
           good={ good }
           neutral={ neutral }
           bad={ bad }
-          total={ total }
-          positivePercentage={ percentage }
+          total={ this.countTotalFeedback() }
+          positivePercentage={ this.countPositiveFeedbackPercentage() }
           />
           <Section />
       </div>

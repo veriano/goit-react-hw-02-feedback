@@ -7,12 +7,12 @@ function Statistics({ good, neutral, bad, total, positivePercentage }) {
         return (
               <div className={s.feedback}>
               <h2 className={s.statisticsTitle}><b>Statistics</b></h2>
-              {total > 0 ? (<ul className={s.list}>
-              <li><p><b>Good: {good}</b></p></li>
-              <li><p><b>Neutral: {neutral}</b></p></li>
-              <li><p><b>Bad: {bad}</b></p></li>
-              <li><p><b>Total: {total}</b></p></li>
-              <li><p><b>Percentage: {Math.round(positivePercentage)}%</b></p></li>
+              {total > 0 ? (<ul className={ s.list }>
+              <li><p><b>Good: { good }</b></p></li>
+              <li><p><b>Neutral: { neutral }</b></p></li>
+              <li><p><b>Bad: { bad }</b></p></li>
+              <li><p><b>Total: { total }</b></p></li>
+              <li><p><b>Percentage: { Math.round( positivePercentage ) }%</b></p></li>
             </ul>) 
             : 
             (<Notification message='No feedback given' />)}
