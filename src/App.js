@@ -31,7 +31,8 @@
     }
 
     countPositiveFeedbackPercentage() {
-      const percentage = (100 / this.countTotalFeedback()) * this.state.good;
+      const { good } = this.state;
+      const percentage = (100 / this.countTotalFeedback()) * good;
       return percentage;
     }
    
