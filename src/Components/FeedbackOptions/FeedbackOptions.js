@@ -7,10 +7,10 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
     
         <ul className={s.listButtons}>
             {options.map(option => (
-        <li key={option}><button className={s.button} type="button" 
-        onClick={() => onLeaveFeedback(option)}>{option}</button></li>))}
-         </ul>
-         )
+            <li key={option}><button className={s.button} type="button" 
+            onClick={() => onLeaveFeedback(option)}>{option}</button></li>))}
+        </ul>
+        )
 }
 
 FeedbackOptions.propTypes = {
